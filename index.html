@@ -20,16 +20,13 @@
   body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.5;
-    padding: 32px 20px;
+    background: var(--bg); color: var(--text);
+    line-height: 1.5; padding: 32px 20px;
   }
   .wrap { max-width: 1080px; margin: 0 auto; }
   header {
     border-bottom: 1px solid var(--border);
-    padding-bottom: 20px;
-    margin-bottom: 28px;
+    padding-bottom: 20px; margin-bottom: 28px;
   }
   h1 { margin: 0 0 6px; font-size: 28px; letter-spacing: -0.5px; }
   .sub { color: var(--muted); font-size: 14px; }
@@ -80,6 +77,7 @@
   }
   .pill.owned { background: rgba(34, 197, 94, 0.12); color: var(--owned); border: 1px solid rgba(34, 197, 94, 0.3); }
   .pill.p0 { background: rgba(168, 85, 247, 0.12); color: var(--p0); border: 1px solid rgba(168, 85, 247, 0.3); }
+  .price-actual { color: var(--text); font-weight: 500; }
 
   .totals {
     display: grid; grid-template-columns: repeat(3, 1fr);
@@ -103,7 +101,7 @@
 <div class="wrap">
   <header>
     <h1>Whizzlead Media — Production Kit List</h1>
-    <div class="sub">Gear stack for always-on B2B video: founder talking-heads, podcasts, LinkedIn/YouTube shorts, event coverage.</div>
+    <div class="sub">Gear stack for always-on B2B video: founder talking-heads, podcasts, LinkedIn/YouTube shorts, event coverage. Prices in bold are from actual invoices; ~ values are current India MRP estimates.</div>
     <div class="legend">
       <span class="chip"><span class="dot owned"></span> Owned / on hand</span>
       <span class="chip"><span class="dot p0"></span> P0 — in cart, buying now</span>
@@ -115,7 +113,7 @@
     <table>
       <thead><tr><th>Item</th><th>Why</th><th class="price">Price (INR)</th><th>Status</th></tr></thead>
       <tbody>
-        <tr><td class="item">Sony ZV-E10 II</td><td class="why">Primary body. APS-C, 4K60, small footprint.</td><td class="price">~₹85,000</td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Sony ZV-E10 II</td><td class="why">Primary body. APS-C, 4K60, small footprint. Bundle from Pai International included Sony carry case + Sony SF-64UX2 64GB SD.</td><td class="price price-actual">₹83,990</td><td class="status"><span class="pill owned">Owned</span></td></tr>
         <tr><td class="item">Canon C400</td><td class="why">Full-frame cinema camera for premium client work. Borrowed from a friend; rented when needed.</td><td class="price">Rental ~₹15–25k / day</td><td class="status"><span class="pill owned">Borrowed / rental</span></td></tr>
         <tr><td class="item">Sigma 16mm f/1.4 DC DN</td><td class="why">Wide for pieces to camera and B-roll.</td><td class="price">~₹34,000</td><td class="status"><span class="pill owned">Owned</span></td></tr>
       </tbody>
@@ -123,8 +121,33 @@
   </section>
 
   <section>
+    <h2><span class="icon">🎬</span> Support, rigging &amp; movement</h2>
+    <table>
+      <thead><tr><th>Item</th><th>Why</th><th class="price">Price (INR)</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="item">Leofoto LS-285C + LH-36R ball head</td><td class="why">Carbon-fibre primary sticks with 36mm ball head. Lightweight and rated well beyond the ZV-E10 II's weight.</td><td class="price price-actual">₹19,500</td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">DJI RS4 Mini gimbal</td><td class="why">Handheld movement, B-roll.</td><td class="price">~₹32,000</td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">SmallRig ARRI Locating Top Handle Lite (3765)</td><td class="why">Rig accessory. Low-profile top handle for run-and-gun shots and mounting mic / monitor.</td><td class="price price-actual">₹3,000</td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Sony carry case (bundled)</td><td class="why">Came free with the ZV-E10 II bundle.</td><td class="price">Free</td><td class="status"><span class="pill owned">Owned</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="icon">💾</span> Media &amp; power</h2>
+    <table>
+      <thead><tr><th>Item</th><th>Why</th><th class="price">Price (INR)</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="item">Angelbird AV Pro MK2 128GB V90 SDXC</td><td class="why">Fast primary card. V90 rating handles 4K60 and S&amp;Q on the ZV-E10 II without dropped frames.</td><td class="price price-actual">₹8,000</td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Sony SF-64UX2 64GB SDXC (bundled)</td><td class="why">Bundled card. Fine as a B-roll / backup card; too slow for sustained high-bitrate 4K.</td><td class="price">Free</td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">SmallRig VB99 Pro Mini V-Mount Battery (4292)</td><td class="why">99Wh V-mount. Powers the incoming Amaran 200X-S key light on location and can dummy-power the camera for long shoots.</td><td class="price price-actual">₹16,000</td><td class="status"><span class="pill owned">Owned</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
     <h2><span class="icon">💡</span> Lighting</h2>
-    <div class="note">Cart closes the biggest gap: a proper key light (Amaran 200X-S), matching softbox modifier, an accent/effect tube, and C-stand with boom arm for overhead placement.</div>
+    <div class="note">Cart closes the biggest gap: a proper key light (Amaran 200X-S), matching softbox modifier, an accent/effect tube, and C-stand with boom arm for overhead placement. The V-mount battery you already own runs the 200X-S untethered.</div>
     <table>
       <thead><tr><th>Item</th><th>Why</th><th class="price">Price (INR)</th><th>Status</th></tr></thead>
       <tbody>
@@ -151,17 +174,6 @@
   </section>
 
   <section>
-    <h2><span class="icon">🎬</span> Support &amp; movement</h2>
-    <table>
-      <thead><tr><th>Item</th><th>Why</th><th class="price">Price (INR)</th><th>Status</th></tr></thead>
-      <tbody>
-        <tr><td class="item">Leofoto tripod</td><td class="why">Primary sticks.</td><td class="price">~₹30,000</td><td class="status"><span class="pill owned">Owned</span></td></tr>
-        <tr><td class="item">DJI RS4 Mini gimbal</td><td class="why">Handheld movement, B-roll.</td><td class="price">~₹32,000</td><td class="status"><span class="pill owned">Owned</span></td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section>
     <h2><span class="icon">🎞️</span> Colour &amp; grading</h2>
     <table>
       <thead><tr><th>Item</th><th>Why</th><th class="price">Price (INR)</th><th>Status</th></tr></thead>
@@ -176,7 +188,7 @@
     <div class="totals">
       <div class="stat">
         <div class="label">Owned kit value (excl. C400)</div>
-        <div class="val">~₹2,29,500</div>
+        <div class="val">~₹2,44,990</div>
       </div>
       <div class="stat">
         <div class="label">P0 — buying now (6 items)</div>
@@ -184,10 +196,10 @@
       </div>
       <div class="stat">
         <div class="label">Total kit value post-purchase</div>
-        <div class="val">~₹3,23,400</div>
+        <div class="val">~₹3,38,900</div>
       </div>
     </div>
-    <div class="note" style="margin-top:14px;">Owned figures are current India MRP estimates, not what you paid. Canon C400 is excluded from totals since it's borrowed / rented per shoot (~₹15–25k/day depending on rental house and duration). The P0 cart closes the lighting gap end-to-end and adds proper monitoring headphones plus a colour reference for multi-camera grading with the Canon C400.</div>
+    <div class="note" style="margin-top:14px;">Owned figures use invoice values where available (ZV-E10 II bundle, Leofoto, V-mount, Angelbird SD, top handle) and current MRP estimates for the rest. Canon C400 is excluded from totals since it's borrowed / rented per shoot. Bundled items (Sony carry case, SF-64UX2 SD) counted at ₹0.</div>
   </section>
 
   <footer>Whizzlead Media · whizzleadmedia.com</footer>
