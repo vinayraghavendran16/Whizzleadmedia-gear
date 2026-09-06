@@ -15,6 +15,8 @@
     --accent: #ff6a3d;
     --owned: #22c55e;
     --p0: #a855f7;
+    --missing: #ef4444;
+    --available: #22c55e;
   }
   * { box-sizing: border-box; }
   body {
@@ -23,10 +25,10 @@
     background: var(--bg); color: var(--text);
     line-height: 1.5; padding: 32px 20px;
   }
-  .wrap { max-width: 1080px; margin: 0 auto; }
+  .wrap { max-width: 1200px; margin: 0 auto; }
   header {
     border-bottom: 1px solid var(--border);
-    padding-bottom: 20px; margin-bottom: 28px;
+    padding-bottom: 20px; margin-bottom: 24px;
   }
   h1 { margin: 0 0 6px; font-size: 28px; letter-spacing: -0.5px; }
   .sub { color: var(--muted); font-size: 14px; }
@@ -69,14 +71,17 @@
   }
   td.item { font-weight: 500; }
   td.why { color: var(--muted); font-size: 13px; }
-  td.price { white-space: nowrap; color: var(--muted); }
-  td.status { white-space: nowrap; }
+  td.qty { text-align: center; white-space: nowrap; color: var(--muted); font-variant-numeric: tabular-nums; }
+  td.price { white-space: nowrap; color: var(--muted); font-variant-numeric: tabular-nums; }
+  td.status, td.avail { white-space: nowrap; }
   .pill {
     display: inline-block; padding: 3px 8px; border-radius: 999px;
     font-size: 11px; font-weight: 600; letter-spacing: 0.3px;
   }
   .pill.owned { background: rgba(34, 197, 94, 0.12); color: var(--owned); border: 1px solid rgba(34, 197, 94, 0.3); }
   .pill.p0 { background: rgba(168, 85, 247, 0.12); color: var(--p0); border: 1px solid rgba(168, 85, 247, 0.3); }
+  .pill.available { background: rgba(34, 197, 94, 0.12); color: var(--available); border: 1px solid rgba(34, 197, 94, 0.3); }
+  .pill.missing { background: rgba(239, 68, 68, 0.12); color: var(--missing); border: 1px solid rgba(239, 68, 68, 0.3); }
   .price-actual { color: var(--text); font-weight: 500; }
 
   .totals {
@@ -91,8 +96,8 @@
   .stat .val { font-size: 20px; font-weight: 600; margin-top: 4px; }
 
   footer { margin-top: 24px; color: var(--muted); font-size: 12px; text-align: center; }
-  @media (max-width: 640px) {
-    td.price, th.price { display: none; }
+  @media (max-width: 720px) {
+    td.why, th.why { display: none; }
     .totals { grid-template-columns: 1fr; }
   }
 </style>
@@ -100,22 +105,41 @@
 <body>
 <div class="wrap">
   <header>
-    <h1>Whizzlead Media — Production Kit List</h1>
+    <h1>Whizzlead Media Production Kit List</h1>
     <div class="sub">Gear stack for always-on B2B video: founder talking-heads, podcasts, LinkedIn/YouTube shorts, event coverage. Prices in bold are from actual invoices; ~ values are current India MRP estimates.</div>
     <div class="legend">
-      <span class="chip"><span class="dot owned"></span> Owned / on hand</span>
-      <span class="chip"><span class="dot p0"></span> P0 — in cart, buying now</span>
+      <span class="chip"><span class="dot owned"></span> Owned</span>
+      <span class="chip"><span class="dot p0"></span> P0 in cart, buying now</span>
     </div>
   </header>
 
   <section>
+    <h2><span class="icon">💰</span> Investment summary</h2>
+    <div class="totals">
+      <div class="stat">
+        <div class="label">Owned kit value (excl. C400)</div>
+        <div class="val">~₹5,88,700</div>
+      </div>
+      <div class="stat">
+        <div class="label">P0 buying now (6 items)</div>
+        <div class="val">₹93,907</div>
+      </div>
+      <div class="stat">
+        <div class="label">Total kit value post-purchase</div>
+        <div class="val">~₹6,82,600</div>
+      </div>
+    </div>
+    <div class="note" style="margin-top:14px;">Bold prices are from invoices. ~ prices are current India MRP estimates. Canon C400 is excluded from totals since it's borrowed / rented per shoot (~₹15 to 25k per day). iPad Mini A17 Pro included at MRP estimate pending invoice.</div>
+  </section>
+
+  <section>
     <h2><span class="icon">📷</span> Camera bodies &amp; lenses</h2>
     <table>
-      <thead><tr><th>Item</th><th>Why</th><th class="price">Price (INR)</th><th>Status</th></tr></thead>
+      <thead><tr><th>Item</th><th class="why">Why</th><th class="qty">Qty</th><th class="price">Price (INR)</th><th class="avail">Availability</th><th>Status</th></tr></thead>
       <tbody>
-        <tr><td class="item">Sony ZV-E10 II</td><td class="why">Primary body. APS-C, 4K60, small footprint. Bundle from Pai International included Sony carry case + Sony SF-64UX2 64GB SD.</td><td class="price price-actual">₹83,990</td><td class="status"><span class="pill owned">Owned</span></td></tr>
-        <tr><td class="item">Canon C400</td><td class="why">Full-frame cinema camera for premium client work. Borrowed from a friend; rented when needed.</td><td class="price">Rental ~₹15–25k / day</td><td class="status"><span class="pill owned">Borrowed / rental</span></td></tr>
-        <tr><td class="item">Sigma 16mm f/1.4 DC DN</td><td class="why">Wide for pieces to camera and B-roll.</td><td class="price">~₹34,000</td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Sony ZV-E10 II</td><td class="why">Primary body. APS-C, 4K60, small footprint. Bundle included Sony carry case + SF-64UX2 64GB SD.</td><td class="qty">1</td><td class="price price-actual">₹83,990</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Canon C400</td><td class="why">Full-frame cinema camera for premium client work. Borrowed from a friend, rented when needed.</td><td class="qty">1</td><td class="price">Rental ~₹15 to 25k / day</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Borrowed / rental</span></td></tr>
+        <tr><td class="item">Sigma 16mm f/1.4 DC DN Contemporary (Sony E)</td><td class="why">Wide prime for pieces to camera, interviews, B-roll.</td><td class="qty">1</td><td class="price price-actual">₹34,799</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
       </tbody>
     </table>
   </section>
@@ -123,12 +147,35 @@
   <section>
     <h2><span class="icon">🎬</span> Support, rigging &amp; movement</h2>
     <table>
-      <thead><tr><th>Item</th><th>Why</th><th class="price">Price (INR)</th><th>Status</th></tr></thead>
+      <thead><tr><th>Item</th><th class="why">Why</th><th class="qty">Qty</th><th class="price">Price (INR)</th><th class="avail">Availability</th><th>Status</th></tr></thead>
       <tbody>
-        <tr><td class="item">Leofoto LS-285C + LH-36R ball head</td><td class="why">Carbon-fibre primary sticks with 36mm ball head. Lightweight and rated well beyond the ZV-E10 II's weight.</td><td class="price price-actual">₹19,500</td><td class="status"><span class="pill owned">Owned</span></td></tr>
-        <tr><td class="item">DJI RS4 Mini gimbal</td><td class="why">Handheld movement, B-roll.</td><td class="price">~₹32,000</td><td class="status"><span class="pill owned">Owned</span></td></tr>
-        <tr><td class="item">SmallRig ARRI Locating Top Handle Lite (3765)</td><td class="why">Rig accessory. Low-profile top handle for run-and-gun shots and mounting mic / monitor.</td><td class="price price-actual">₹3,000</td><td class="status"><span class="pill owned">Owned</span></td></tr>
-        <tr><td class="item">Sony carry case (bundled)</td><td class="why">Came free with the ZV-E10 II bundle.</td><td class="price">Free</td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Leofoto LS-285C + LH-36R ball head</td><td class="why">Carbon-fibre primary sticks with 36mm ball head.</td><td class="qty">1</td><td class="price price-actual">₹19,500</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">DJI RS4 Mini gimbal</td><td class="why">Handheld movement, B-roll.</td><td class="qty">1</td><td class="price">~₹32,000</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">DIGITEK DTR-520 BH tripod / monopod (152cm, 7kg)</td><td class="why">Convertible tripod-to-monopod. Backup sticks, event coverage.</td><td class="qty">1</td><td class="price price-actual">₹5,898</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">SmallRig ZV-E10 II Cage Kit (4867)</td><td class="why">Dedicated cage for the primary body. Adds rigging points for mic, monitor, handle.</td><td class="qty">1</td><td class="price price-actual">₹6,000</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">SmallRig Cage for iPad Mini 6 / A17 Pro (5058)</td><td class="why">Rig for teleprompter tablet with tripod mount, cold shoe, sun hood.</td><td class="qty">1</td><td class="price price-actual">₹9,250</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">SmallRig ARRI Locating Top Handle Lite (3765)</td><td class="why">Low-profile top handle for run-and-gun shots.</td><td class="qty">1</td><td class="price price-actual">₹3,000</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">SmallRig Quick Release Side Handle (4403)</td><td class="why">Side handle with quick release for one-handed shooting.</td><td class="qty">1</td><td class="price price-actual">₹2,572</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">SmallRig Mini Camera Side Handle with NATO (4816)</td><td class="why">Ambidextrous NATO-mount side handle.</td><td class="qty">1</td><td class="price price-actual">₹3,650</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">SmallRig Mini Tripod (BUT2664)</td><td class="why">Tabletop tripod with Arca-Type QR plate. Podcast B-cam, overhead shots.</td><td class="qty">1</td><td class="price price-actual">₹4,800</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">SmallRig Camera Desk Mount with Magic Arm (3992)</td><td class="why">Desk C-clamp with magic arm for streaming setups, tabletop shooting.</td><td class="qty">1</td><td class="price price-actual">₹4,875</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">K&amp;F Camera Desk Mount with 360° Ball Head</td><td class="why">Second desk mount for multi-angle desk setup.</td><td class="qty">1</td><td class="price price-actual">₹2,399</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">SmallRig 9.8" Adjustable Magic Arm (2066B)</td><td class="why">Articulating arm for monitor / LED / accessory.</td><td class="qty">1</td><td class="price price-actual">₹2,000</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">SmallRig Rosette Arm 11" with Cold Shoe (1498B)</td><td class="why">Rosette-mount articulating arm.</td><td class="qty">1</td><td class="price price-actual">₹1,599</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">SmallRig Super Clamp with Ballhead (4102)</td><td class="why">Clamp mount for rigging to poles, tables, C-stands.</td><td class="qty">1</td><td class="price price-actual">₹2,755</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">SmallRig Super Clamp (2058) 2-pack</td><td class="why">Extra super clamps for multi-point rigging.</td><td class="qty">2</td><td class="price price-actual">₹1,220</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">SmallRig Metal Phone Support with Cold Shoe (4382/4593)</td><td class="why">Phone rig for BTS content and vertical shorts.</td><td class="qty">1</td><td class="price price-actual">₹2,980</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Peak Design Capture Camera Mount V3 (Silver)</td><td class="why">Belt or strap-mount clip. Frees hands during location scouts and event coverage.</td><td class="qty">1</td><td class="price price-actual">₹5,500</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Falcam F38 Quick Release Plate</td><td class="why">Arca-Swiss 38mm QR system. Standardises camera swaps across tripod, gimbal, side handle.</td><td class="qty">1</td><td class="price price-actual">₹3,999</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">iFootage Quick Release Kit Q38 (Arca Swiss 38mm)</td><td class="why">Additional F38-compatible plates for the multi-tool workflow.</td><td class="qty">1</td><td class="price price-actual">₹3,959</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">SmallRig 4118 Weight-Reducing Shoulder Strap</td><td class="why">Shoulder strap for RS4 Mini, offloads gimbal weight on long shoots.</td><td class="qty">1</td><td class="price price-actual">₹4,800</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">ZORBES RS4 Mini Bag</td><td class="why">Dedicated case for DJI RS4 Mini combo.</td><td class="qty">1</td><td class="price price-actual">₹2,198</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">EDELRID Pure Screw Carabiner (Black, 46g)</td><td class="why">CE-rated locking carabiner. Rigging safety for hanging lights or gear.</td><td class="qty">1</td><td class="price price-actual">₹890</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">SmallRig Screw Ratchet Wingnut Set (3995)</td><td class="why">Rigging small parts.</td><td class="qty">1</td><td class="price price-actual">₹1,314</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">NEOHOOK 1/4" to 3/8" Screw Adapter</td><td class="why">Thread converter for mounting compatibility.</td><td class="qty">1</td><td class="price price-actual">₹189</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">1/4"-22 to 3/8"-22 F2F Convertor (2-pack)</td><td class="why">Female-to-female thread converters.</td><td class="qty">2</td><td class="price price-actual">₹179</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">K&amp;F 11-piece Metal Stepping Rings</td><td class="why">Step-up rings covering 26mm to 82mm. One ND filter fits every lens.</td><td class="qty">1</td><td class="price price-actual">₹889</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Sony carry case (bundled)</td><td class="why">Came free with the ZV-E10 II bundle.</td><td class="qty">1</td><td class="price">Free</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
       </tbody>
     </table>
   </section>
@@ -136,26 +183,49 @@
   <section>
     <h2><span class="icon">💾</span> Media &amp; power</h2>
     <table>
-      <thead><tr><th>Item</th><th>Why</th><th class="price">Price (INR)</th><th>Status</th></tr></thead>
+      <thead><tr><th>Item</th><th class="why">Why</th><th class="qty">Qty</th><th class="price">Price (INR)</th><th class="avail">Availability</th><th>Status</th></tr></thead>
       <tbody>
-        <tr><td class="item">Angelbird AV Pro MK2 128GB V90 SDXC</td><td class="why">Fast primary card. V90 rating handles 4K60 and S&amp;Q on the ZV-E10 II without dropped frames.</td><td class="price price-actual">₹8,000</td><td class="status"><span class="pill owned">Owned</span></td></tr>
-        <tr><td class="item">Sony SF-64UX2 64GB SDXC (bundled)</td><td class="why">Bundled card. Fine as a B-roll / backup card; too slow for sustained high-bitrate 4K.</td><td class="price">Free</td><td class="status"><span class="pill owned">Owned</span></td></tr>
-        <tr><td class="item">SmallRig VB99 Pro Mini V-Mount Battery (4292)</td><td class="why">99Wh V-mount. Powers the incoming Amaran 200X-S key light on location and can dummy-power the camera for long shoots.</td><td class="price price-actual">₹16,000</td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Angelbird AV Pro MK2 128GB V90 SDXC</td><td class="why">Fast primary card. V90 handles 4K60 and S&amp;Q without dropped frames.</td><td class="qty">1</td><td class="price price-actual">₹8,000</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">SanDisk Extreme Pro 512GB SD UHS-I (200MB/s)</td><td class="why">High-capacity primary card for long-form shoots and multi-day events.</td><td class="qty">1</td><td class="price price-actual">₹8,899</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">SanDisk Extreme Pro 256GB microSDXC UHS-I</td><td class="why">4K-rated microSD, action cam and drone-ready.</td><td class="qty">1</td><td class="price price-actual">₹2,919</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Sony SF-64UX2 64GB SDXC (bundled)</td><td class="why">Bundled card. Fine as B-roll or backup.</td><td class="qty">1</td><td class="price">Free</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Samsung EVO Plus 32GB microSDHC</td><td class="why">Legacy card. Usable in wireless mic or backup body.</td><td class="qty">1</td><td class="price price-actual">₹378</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">SmallRig SD Card Holder Case 15 slots (3192)</td><td class="why">Water-resistant multi-card wallet.</td><td class="qty">1</td><td class="price price-actual">₹1,900</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Samsung Type-C USB Flash Drive 64GB</td><td class="why">Fast USB-C drive for quick file handoff to clients.</td><td class="qty">1</td><td class="price price-actual">₹1,149</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Samsung T5 Portable SSD 1TB (Metallic Red)</td><td class="why">Ingest / offload drive for on-set backups.</td><td class="qty">1</td><td class="price">~₹8,000</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">TIZUM External Hard Drive Case (2.5")</td><td class="why">Enclosure for legacy 2.5" HDDs. Cheap archive storage.</td><td class="qty">1</td><td class="price price-actual">₹349</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">SmallRig VB99 Pro Mini V-Mount Battery (4292)</td><td class="why">99Wh V-mount. Powers COB LEDs and dummy-powers full-frame bodies.</td><td class="qty">1</td><td class="price price-actual">₹16,000</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">SmallRig D-Tap to NP-FZ100 Dummy Battery (4253)</td><td class="why">Powers Sony full-frame (A7, FX3, ZV-E1) from V-mount for uninterrupted long shoots.</td><td class="qty">1</td><td class="price price-actual">₹4,778</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Anker Zolo 20,000mAh Powerbank (30W, MFi)</td><td class="why">Large-capacity powerbank with built-in USB-C and Lightning cables.</td><td class="qty">1</td><td class="price price-actual">₹5,199</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">UGREEN Wireless MagSafe Powerbank 10,000mAh</td><td class="why">Wireless charging on iPhone / iPad without cables.</td><td class="qty">1</td><td class="price price-actual">₹3,999</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Ambrane 10,000mAh Powerbank (Force 10k, 22.5W)</td><td class="why">Compact backup power.</td><td class="qty">1</td><td class="price price-actual">₹1,399</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">UGREEN Nexode 100W GaN II 4-Port USB-C Charger</td><td class="why">Fast-charge multiple devices simultaneously on location.</td><td class="qty">1</td><td class="price price-actual">₹5,725</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Spigen USB-C Car Charger 65W Dual USB</td><td class="why">In-vehicle charging for travel days.</td><td class="qty">1</td><td class="price price-actual">₹1,899</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Honeywell Surge Protector 8-socket</td><td class="why">On-set power distribution with surge protection.</td><td class="qty">2</td><td class="price price-actual">₹1,369</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Honeywell Surge Protector 4-socket with USB-C PD 18W</td><td class="why">Newer 4-socket with USB-PD for phones / tablets on set.</td><td class="qty">1</td><td class="price price-actual">₹1,699</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Hoteon 5m Heavy Duty Extension Board</td><td class="why">Long extension for large-set power runs.</td><td class="qty">1</td><td class="price price-actual">₹1,234</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
       </tbody>
     </table>
   </section>
 
   <section>
     <h2><span class="icon">💡</span> Lighting</h2>
-    <div class="note">Cart closes the biggest gap: a proper key light (Amaran 200X-S), matching softbox modifier, an accent/effect tube, and C-stand with boom arm for overhead placement. The V-mount battery you already own runs the 200X-S untethered.</div>
+    <div class="note">P0 cart closes the biggest remaining gap: Amaran 200X-S key + Octa Dome 90 softbox + TL60 RGB tube + C-stand with boom. The V-mount already in the kit runs the 200X-S untethered.</div>
     <table>
-      <thead><tr><th>Item</th><th>Why</th><th class="price">Price (INR)</th><th>Status</th></tr></thead>
+      <thead><tr><th>Item</th><th class="why">Why</th><th class="qty">Qty</th><th class="price">Price (INR)</th><th class="avail">Availability</th><th>Status</th></tr></thead>
       <tbody>
-        <tr><td class="item">Godox 90cm softbox</td><td class="why">Existing key light modifier.</td><td class="price">~₹7,000</td><td class="status"><span class="pill owned">Owned</span></td></tr>
-        <tr><td class="item">Aputure Amaran 200X-S COB LED (Bicolor 250W)</td><td class="why">Main key light. 51,600 lux, bi-color 2700–6500K, app control. Powerful enough for daylight interiors and larger sets.</td><td class="price">₹36,090</td><td class="status"><span class="pill p0">P0</span></td></tr>
-        <tr><td class="item">Amaran Octa Dome 90 (Bowens mount)</td><td class="why">Quick-release softbox pairing directly with the Amaran 200X-S. Soft, wrapped light for founder interviews.</td><td class="price">₹10,990</td><td class="status"><span class="pill p0">P0</span></td></tr>
-        <tr><td class="item">Godox TL60 RGB Tube Light</td><td class="why">Background accent, colour effects, practical fill. CRI 96, 39 FX effects, wireless/DMX/app control.</td><td class="price">₹18,516</td><td class="status"><span class="pill p0">P0</span></td></tr>
-        <tr><td class="item">Godox 270CS 8.8ft C-Stand with Boom Arm</td><td class="why">Heavy-duty support for booming the key overhead. Sandbag mandatory for safety over talent.</td><td class="price">₹18,400</td><td class="status"><span class="pill p0">P0</span></td></tr>
+        <tr><td class="item">Godox 90cm softbox</td><td class="why">Existing key light modifier.</td><td class="qty">1</td><td class="price">~₹7,000</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">DIGITEK DRL-18R LED Ring Light (18", remote)</td><td class="why">Ring light for talking-head / vlog setups.</td><td class="qty">1</td><td class="price price-actual">₹3,799</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">DIGITEK DLS-9FT Light Stand</td><td class="why">Aluminium alloy light stand. Multiple used for 3-point lighting.</td><td class="qty">3</td><td class="price price-actual">₹2,397</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Powerpak 5-in-1 Collapsible Reflector (42", 110cm)</td><td class="why">Silver, gold, white, black, diffusion. Free fill light.</td><td class="qty">1</td><td class="price price-actual">₹899</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Powerpak T8736 Reflector Holder (76", 190cm)</td><td class="why">Boom holder for reflector on stand.</td><td class="qty">1</td><td class="price price-actual">₹1,050</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Godox LITEMONS LED6R RGB Video Light</td><td class="why">Pocket RGB with magnet mount, 13 FX modes. Accent light for interviews.</td><td class="qty">1</td><td class="price price-actual">₹2,144</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Tukzer 19" Monitor Screen Light Bar</td><td class="why">Desk lighting for podcast / streaming setup.</td><td class="qty">1</td><td class="price price-actual">₹2,299</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Kreo Slab Video Light (LED with 5 modes)</td><td class="why">Adjustable LED panel. Indian brand backup / accent light.</td><td class="qty">1</td><td class="price price-actual">₹1,999</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Aputure Amaran 200X-S COB LED (Bicolor 250W)</td><td class="why">Main key light. 51,600 lux, bi-color 2700 to 6500K, app control.</td><td class="qty">1</td><td class="price">₹36,090</td><td class="avail">In cart</td><td class="status"><span class="pill p0">P0</span></td></tr>
+        <tr><td class="item">Amaran Octa Dome 90 (Bowens mount)</td><td class="why">Quick-release softbox pairing with the Amaran 200X-S.</td><td class="qty">1</td><td class="price">₹10,990</td><td class="avail">In cart</td><td class="status"><span class="pill p0">P0</span></td></tr>
+        <tr><td class="item">Godox TL60 RGB Tube Light</td><td class="why">Background accent, colour effects, practical fill. CRI 96, 39 FX effects.</td><td class="qty">1</td><td class="price">₹18,516</td><td class="avail">In cart</td><td class="status"><span class="pill p0">P0</span></td></tr>
+        <tr><td class="item">Godox 270CS 8.8ft C-Stand with Boom Arm</td><td class="why">Heavy-duty support for booming the key overhead.</td><td class="qty">1</td><td class="price">₹18,400</td><td class="avail">In cart</td><td class="status"><span class="pill p0">P0</span></td></tr>
       </tbody>
     </table>
   </section>
@@ -163,43 +233,102 @@
   <section>
     <h2><span class="icon">🎙️</span> Audio</h2>
     <table>
-      <thead><tr><th>Item</th><th>Why</th><th class="price">Price (INR)</th><th>Status</th></tr></thead>
+      <thead><tr><th>Item</th><th class="why">Why</th><th class="qty">Qty</th><th class="price">Price (INR)</th><th class="avail">Availability</th><th>Status</th></tr></thead>
       <tbody>
-        <tr><td class="item">Rode VideoMic Go II</td><td class="why">On-camera shotgun / scratch audio.</td><td class="price">~₹9,500</td><td class="status"><span class="pill owned">Owned</span></td></tr>
-        <tr><td class="item">Rode PodMic USB</td><td class="why">Podcast host mic.</td><td class="price">~₹17,000</td><td class="status"><span class="pill owned">Owned</span></td></tr>
-        <tr><td class="item">DJI Mic Mini 2</td><td class="why">Wireless lav for talent.</td><td class="price">~₹15,000</td><td class="status"><span class="pill owned">Owned</span></td></tr>
-        <tr><td class="item">Sony MDR-7506 Professional Headphones</td><td class="why">Closed-back monitoring on set. Trust your audio live instead of catching problems in the edit.</td><td class="price">₹7,490</td><td class="status"><span class="pill p0">P0</span></td></tr>
+        <tr><td class="item">Rode VideoMic Go II</td><td class="why">On-camera shotgun for scratch audio and run-and-gun shoots.</td><td class="qty">1</td><td class="price price-actual">₹9,199</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Rode PodMic USB</td><td class="why">Podcast host mic.</td><td class="qty">1</td><td class="price">~₹17,000</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">DJI Mic Mini 2</td><td class="why">Wireless lav for talent.</td><td class="qty">1</td><td class="price">~₹15,000</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Rode DeadCat Go Fur Wind Shield</td><td class="why">Wind protection for VideoMic Go II.</td><td class="qty">1</td><td class="price price-actual">₹2,370</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Rode WS12 Microphone Windshield</td><td class="why">Foam windshield for PodMic.</td><td class="qty">1</td><td class="price price-actual">₹2,299</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Rode SC19 USB-C to Lightning Cable (1.5m)</td><td class="why">Direct-record from Rode mics to iPhone.</td><td class="qty">1</td><td class="price price-actual">₹3,000</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Rode SC17 USB-C to USB-C Cable (1.5m)</td><td class="why">Fast direct-connect for wireless mic to laptop or camera.</td><td class="qty">1</td><td class="price price-actual">₹1,900</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Rode SC1 TRRS Extension Cable</td><td class="why">Extension cable for TRRS mic connections.</td><td class="qty">1</td><td class="price price-actual">₹1,604</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Sennheiser IE 300 In-Ear Audiophile</td><td class="why">Field monitoring with balanced sound.</td><td class="qty">1</td><td class="price price-actual">₹12,990</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Sony WH-1000XM3 Wireless Noise Cancelling</td><td class="why">Travel headphones, casual monitoring.</td><td class="qty">1</td><td class="price price-actual">₹17,990</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Audio-Technica ATH-M50x Studio Headphones</td><td class="why">Reference studio monitoring headphones.</td><td class="qty">1</td><td class="price price-actual">₹9,969</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Edifier MR4 Powered Studio Monitor 2.0 (42W)</td><td class="why">Near-field monitors for edit review and mixing.</td><td class="qty">1</td><td class="price price-actual">₹11,983</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Audio Array AA-21 Desktop Speaker Stands</td><td class="why">Isolating stands for the Edifier MR4 monitors.</td><td class="qty">1</td><td class="price price-actual">₹3,749</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">UGREEN 3.5mm Male-to-Female Audio Extension</td><td class="why">Extension cable for headphones or audio taps.</td><td class="qty">1</td><td class="price price-actual">₹690</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">UGREEN USB-C to 3.5mm Audio Adapter (HiFi DAC)</td><td class="why">DAC-powered adapter for wired headphones from USB-C laptop or phone.</td><td class="qty">1</td><td class="price price-actual">₹1,025</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">UGREEN Lightning to 3.5mm Adapter (Apple MFi)</td><td class="why">Wired headphones on iPhone.</td><td class="qty">1</td><td class="price price-actual">₹1,599</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">BlueRigger 3.5mm Aux to 2RCA Audio Cable (10ft)</td><td class="why">Connects studio monitors to interface / mixer via RCA.</td><td class="qty">1</td><td class="price price-actual">₹1,304</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Sony MDR-7506 Professional Headphones</td><td class="why">Closed-back on-set monitoring.</td><td class="qty">1</td><td class="price">₹7,490</td><td class="avail">In cart</td><td class="status"><span class="pill p0">P0</span></td></tr>
       </tbody>
     </table>
   </section>
 
   <section>
-    <h2><span class="icon">🎞️</span> Colour &amp; grading</h2>
+    <h2><span class="icon">🎞️</span> Colour, grading &amp; optics</h2>
     <table>
-      <thead><tr><th>Item</th><th>Why</th><th class="price">Price (INR)</th><th>Status</th></tr></thead>
+      <thead><tr><th>Item</th><th class="why">Why</th><th class="qty">Qty</th><th class="price">Price (INR)</th><th class="avail">Availability</th><th>Status</th></tr></thead>
       <tbody>
-        <tr><td class="item">Pixiss 4-in-1 Color Correction &amp; White Balance Card Set</td><td class="why">Neutral colour + exposure reference. Critical when matching Sony ZV-E10 II and Canon C400 footage in the same timeline.</td><td class="price">₹2,421</td><td class="status"><span class="pill p0">P0</span></td></tr>
+        <tr><td class="item">Magideal 18% Gray Reference Card</td><td class="why">Neutral exposure reference for multicam.</td><td class="qty">1</td><td class="price price-actual">₹664</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">K&amp;F Concept 58mm Variable ND (ND2-400)</td><td class="why">Variable ND for cinematic shallow-DoF outdoors.</td><td class="qty">1</td><td class="price price-actual">₹2,099</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">K&amp;F Concept 67mm Variable ND (ND2-400)</td><td class="why">Variable ND for the Sigma 16mm f/1.4 (67mm thread).</td><td class="qty">1</td><td class="price price-actual">₹2,299</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Pixiss 4-in-1 Color Correction &amp; White Balance Card Set</td><td class="why">Neutral colour reference for matching ZV-E10 II and Canon C400 footage.</td><td class="qty">1</td><td class="price">₹2,421</td><td class="avail">In cart</td><td class="status"><span class="pill p0">P0</span></td></tr>
       </tbody>
     </table>
   </section>
 
   <section>
-    <h2><span class="icon">💰</span> Investment summary</h2>
-    <div class="totals">
-      <div class="stat">
-        <div class="label">Owned kit value (excl. C400)</div>
-        <div class="val">~₹2,44,990</div>
-      </div>
-      <div class="stat">
-        <div class="label">P0 — buying now (6 items)</div>
-        <div class="val">₹93,907</div>
-      </div>
-      <div class="stat">
-        <div class="label">Total kit value post-purchase</div>
-        <div class="val">~₹3,38,900</div>
-      </div>
-    </div>
-    <div class="note" style="margin-top:14px;">Owned figures use invoice values where available (ZV-E10 II bundle, Leofoto, V-mount, Angelbird SD, top handle) and current MRP estimates for the rest. Canon C400 is excluded from totals since it's borrowed / rented per shoot. Bundled items (Sony carry case, SF-64UX2 SD) counted at ₹0.</div>
+    <h2><span class="icon">🔌</span> Cables, connectivity &amp; capture</h2>
+    <table>
+      <thead><tr><th>Item</th><th class="why">Why</th><th class="qty">Qty</th><th class="price">Price (INR)</th><th class="avail">Availability</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="item">BlueRigger Mini HDMI to HDMI Cable (10ft)</td><td class="why">Camera-to-monitor / capture cable.</td><td class="qty">1</td><td class="price price-actual">₹729</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">BlueRigger Micro HDMI to HDMI Cable (3ft)</td><td class="why">Short cable for rigged camera-to-monitor.</td><td class="qty">1</td><td class="price price-actual">₹569</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Belkin 2m Gold-plated HDMI Cable (4K)</td><td class="why">Reliable 2m HDMI for edit desk / capture setup.</td><td class="qty">1</td><td class="price price-actual">₹799</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">BlueRigger 8K HDMI Coupler (F to F)</td><td class="why">HDMI cable joiner for extending runs.</td><td class="qty">1</td><td class="price price-actual">₹599</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Techno Buzz 2-Port HDMI Splitter (4K, 3D)</td><td class="why">Split HDMI to two displays.</td><td class="qty">1</td><td class="price price-actual">₹799</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">UGREEN HDMI Switch 4K 60Hz (2-in-1-out)</td><td class="why">Switch multiple HDMI sources to one display.</td><td class="qty">1</td><td class="price price-actual">₹1,234</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">PiBOX 4K HDMI to USB 3.0 Video Capture Card</td><td class="why">Camera-to-laptop capture for streaming and multicam.</td><td class="qty">1</td><td class="price price-actual">₹909</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Creative Live! Cam Sync 1080p V2 Webcam</td><td class="why">Backup webcam / dedicated framing for calls.</td><td class="qty">1</td><td class="price price-actual">₹2,699</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">UGREEN 5Gbps USB-C Switch (2 PCs, 4 USB)</td><td class="why">Share USB peripherals between two computers.</td><td class="qty">1</td><td class="price price-actual">₹3,869</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">UGREEN 240W USB-C to USB-C 3.2 Gen2 Cable</td><td class="why">High-wattage charging + fast data for pro workflows.</td><td class="qty">1</td><td class="price price-actual">₹2,599</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">UGREEN 100W USB-C to USB-C Cable (2-pack)</td><td class="why">Everyday high-power charging cables.</td><td class="qty">2</td><td class="price price-actual">₹1,539</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">UGREEN SD Card Reader USB 3.0 Dual Slot</td><td class="why">Fast card ingest with SD + microSD slots.</td><td class="qty">1</td><td class="price price-actual">₹999</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="icon">🖥️</span> Desk, tablet &amp; accessories</h2>
+    <table>
+      <thead><tr><th>Item</th><th class="why">Why</th><th class="qty">Qty</th><th class="price">Price (INR)</th><th class="avail">Availability</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="item">Apple iPad Mini (A17 Pro)</td><td class="why">Teleprompter tablet in the SmallRig cage. Also field script / storyboard.</td><td class="qty">1</td><td class="price">~₹49,900</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">NEEWER Teleprompter X14 with RT-110 Remote</td><td class="why">Portable teleprompter with app control. Founder retainer content ships faster.</td><td class="qty">1</td><td class="price price-actual">₹17,999</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Logitech MX Master 3S Wireless Mouse</td><td class="why">Precision mouse for edit workflow.</td><td class="qty">1</td><td class="price price-actual">₹10,000</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Tizum Vertical Laptop Stand</td><td class="why">Desk-side laptop docking.</td><td class="qty">1</td><td class="price price-actual">₹1,229</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="icon">🎒</span> Cases &amp; travel</h2>
+    <table>
+      <thead><tr><th>Item</th><th class="why">Why</th><th class="qty">Qty</th><th class="price">Price (INR)</th><th class="avail">Availability</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="item">Arctic Hunter Crossbody Sling Bag</td><td class="why">Everyday carry for camera + one lens. Water-resistant.</td><td class="qty">1</td><td class="price price-actual">₹2,849</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">ALPAKA HUB Pouch X-Pac X42 EDC Organizer</td><td class="why">Weather-proof EDC tech pouch.</td><td class="qty">1</td><td class="price price-actual">₹3,695</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Tomtoc Tech Organizer Pouch (MacBook accessories)</td><td class="why">Water-resistant accessory bag with card slots.</td><td class="qty">1</td><td class="price price-actual">₹3,599</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">iOttie Hard Protective Case</td><td class="why">Impact-resistant travel case for power bank / cables.</td><td class="qty">1</td><td class="price price-actual">₹389</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">M.G.R.J Hard Case for Logitech MX Keys</td><td class="why">Travel case for MX Keys keyboard.</td><td class="qty">1</td><td class="price price-actual">₹1,899</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">M.G.R.J Case for Logitech MX Master 2S / 3 / 3S</td><td class="why">Travel case for the MX Master 3S mouse.</td><td class="qty">1</td><td class="price price-actual">₹599</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">M.G.R.J Marshall Emberton Speaker Case</td><td class="why">Travel cases for Marshall Emberton portable speakers.</td><td class="qty">3</td><td class="price price-actual">₹2,694</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="icon">🧰</span> Maintenance</h2>
+    <table>
+      <thead><tr><th>Item</th><th class="why">Why</th><th class="qty">Qty</th><th class="price">Price (INR)</th><th class="avail">Availability</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="item">Electric Air Duster (300k RPM Cordless)</td><td class="why">Cleans sensors, lenses, laptop keyboards. Compressed-air replacement.</td><td class="qty">1</td><td class="price price-actual">₹8,695</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">ULANZI CU01 Camera Cooler Kit</td><td class="why">Active cooling for the ZV-E10 II. Fixes 4K60 overheat cutouts on long-form shoots.</td><td class="qty">1</td><td class="price price-actual">₹5,999</td><td class="avail"><span class="pill available">Available</span></td><td class="status"><span class="pill owned">Owned</span></td></tr>
+      </tbody>
+    </table>
   </section>
 
   <footer>Whizzlead Media · whizzleadmedia.com</footer>
