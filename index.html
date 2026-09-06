@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whizzlead Media — Kit List</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --panel: #171a21;
+    --panel-2: #1e222b;
+    --border: #2a2f3a;
+    --text: #e8eaed;
+    --muted: #9aa3b2;
+    --accent: #ff6a3d;
+    --owned: #22c55e;
+    --p0: #a855f7;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    padding: 32px 20px;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; }
+  header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 20px;
+    margin-bottom: 28px;
+  }
+  h1 { margin: 0 0 6px; font-size: 28px; letter-spacing: -0.5px; }
+  .sub { color: var(--muted); font-size: 14px; }
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 12px;
+    margin-top: 16px; font-size: 12px;
+  }
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 10px; border-radius: 999px;
+    background: var(--panel-2); border: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .dot.owned { background: var(--owned); }
+  .dot.p0 { background: var(--p0); }
+
+  section {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px 22px; margin-bottom: 20px;
+  }
+  section h2 {
+    margin: 0 0 4px; font-size: 18px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  section h2 .icon {
+    width: 26px; height: 26px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--panel-2); border-radius: 6px; font-size: 14px;
+  }
+  section .note { color: var(--muted); font-size: 13px; margin-bottom: 14px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td {
+    text-align: left; padding: 10px 8px;
+    border-bottom: 1px solid var(--border); vertical-align: top;
+  }
+  th {
+    font-weight: 500; color: var(--muted); font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  td.item { font-weight: 500; }
+  td.why { color: var(--muted); font-size: 13px; }
+  td.price { white-space: nowrap; color: var(--muted); }
+  td.status { white-space: nowrap; }
+  .pill {
+    display: inline-block; padding: 3px 8px; border-radius: 999px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.3px;
+  }
+  .pill.owned { background: rgba(34, 197, 94, 0.12); color: var(--owned); border: 1px solid rgba(34, 197, 94, 0.3); }
+  .pill.p0 { background: rgba(168, 85, 247, 0.12); color: var(--p0); border: 1px solid rgba(168, 85, 247, 0.3); }
+
+  .totals {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 12px; margin-top: 8px;
+  }
+  .stat {
+    background: var(--panel-2); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px 16px;
+  }
+  .stat .label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+  .stat .val { font-size: 20px; font-weight: 600; margin-top: 4px; }
+
+  footer { margin-top: 24px; color: var(--muted); font-size: 12px; text-align: center; }
+  @media (max-width: 640px) {
+    td.price, th.price { display: none; }
+    .totals { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Whizzlead Media — Production Kit List</h1>
+    <div class="sub">Gear stack for always-on B2B video: founder talking-heads, podcasts, LinkedIn/YouTube shorts, event coverage.</div>
+    <div class="legend">
+      <span class="chip"><span class="dot owned"></span> Owned / on hand</span>
+      <span class="chip"><span class="dot p0"></span> P0 — in cart, buying now</span>
+    </div>
+  </header>
+
+  <section>
+    <h2><span class="icon">📷</span> Camera bodies &amp; lenses</h2>
+    <table>
+      <thead><tr><th>Item</th><th>Why</th><th class="price">Price (INR)</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="item">Sony ZV-E10 II</td><td class="why">Primary body. APS-C, 4K60, small footprint.</td><td class="price">~₹85,000</td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Canon C400</td><td class="why">Full-frame cinema camera for premium client work. Borrowed from a friend; rented when needed.</td><td class="price">Rental ~₹15–25k / day</td><td class="status"><span class="pill owned">Borrowed / rental</span></td></tr>
+        <tr><td class="item">Sigma 16mm f/1.4 DC DN</td><td class="why">Wide for pieces to camera and B-roll.</td><td class="price">~₹34,000</td><td class="status"><span class="pill owned">Owned</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="icon">💡</span> Lighting</h2>
+    <div class="note">Cart closes the biggest gap: a proper key light (Amaran 200X-S), matching softbox modifier, an accent/effect tube, and C-stand with boom arm for overhead placement.</div>
+    <table>
+      <thead><tr><th>Item</th><th>Why</th><th class="price">Price (INR)</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="item">Godox 90cm softbox</td><td class="why">Existing key light modifier.</td><td class="price">~₹7,000</td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Aputure Amaran 200X-S COB LED (Bicolor 250W)</td><td class="why">Main key light. 51,600 lux, bi-color 2700–6500K, app control. Powerful enough for daylight interiors and larger sets.</td><td class="price">₹36,090</td><td class="status"><span class="pill p0">P0</span></td></tr>
+        <tr><td class="item">Amaran Octa Dome 90 (Bowens mount)</td><td class="why">Quick-release softbox pairing directly with the Amaran 200X-S. Soft, wrapped light for founder interviews.</td><td class="price">₹10,990</td><td class="status"><span class="pill p0">P0</span></td></tr>
+        <tr><td class="item">Godox TL60 RGB Tube Light</td><td class="why">Background accent, colour effects, practical fill. CRI 96, 39 FX effects, wireless/DMX/app control.</td><td class="price">₹18,516</td><td class="status"><span class="pill p0">P0</span></td></tr>
+        <tr><td class="item">Godox 270CS 8.8ft C-Stand with Boom Arm</td><td class="why">Heavy-duty support for booming the key overhead. Sandbag mandatory for safety over talent.</td><td class="price">₹18,400</td><td class="status"><span class="pill p0">P0</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="icon">🎙️</span> Audio</h2>
+    <table>
+      <thead><tr><th>Item</th><th>Why</th><th class="price">Price (INR)</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="item">Rode VideoMic Go II</td><td class="why">On-camera shotgun / scratch audio.</td><td class="price">~₹9,500</td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Rode PodMic USB</td><td class="why">Podcast host mic.</td><td class="price">~₹17,000</td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">DJI Mic Mini 2</td><td class="why">Wireless lav for talent.</td><td class="price">~₹15,000</td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">Sony MDR-7506 Professional Headphones</td><td class="why">Closed-back monitoring on set. Trust your audio live instead of catching problems in the edit.</td><td class="price">₹7,490</td><td class="status"><span class="pill p0">P0</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="icon">🎬</span> Support &amp; movement</h2>
+    <table>
+      <thead><tr><th>Item</th><th>Why</th><th class="price">Price (INR)</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="item">Leofoto tripod</td><td class="why">Primary sticks.</td><td class="price">~₹30,000</td><td class="status"><span class="pill owned">Owned</span></td></tr>
+        <tr><td class="item">DJI RS4 Mini gimbal</td><td class="why">Handheld movement, B-roll.</td><td class="price">~₹32,000</td><td class="status"><span class="pill owned">Owned</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="icon">🎞️</span> Colour &amp; grading</h2>
+    <table>
+      <thead><tr><th>Item</th><th>Why</th><th class="price">Price (INR)</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="item">Pixiss 4-in-1 Color Correction &amp; White Balance Card Set</td><td class="why">Neutral colour + exposure reference. Critical when matching Sony ZV-E10 II and Canon C400 footage in the same timeline.</td><td class="price">₹2,421</td><td class="status"><span class="pill p0">P0</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="icon">💰</span> Investment summary</h2>
+    <div class="totals">
+      <div class="stat">
+        <div class="label">Owned kit value (excl. C400)</div>
+        <div class="val">~₹2,29,500</div>
+      </div>
+      <div class="stat">
+        <div class="label">P0 — buying now (6 items)</div>
+        <div class="val">₹93,907</div>
+      </div>
+      <div class="stat">
+        <div class="label">Total kit value post-purchase</div>
+        <div class="val">~₹3,23,400</div>
+      </div>
+    </div>
+    <div class="note" style="margin-top:14px;">Owned figures are current India MRP estimates, not what you paid. Canon C400 is excluded from totals since it's borrowed / rented per shoot (~₹15–25k/day depending on rental house and duration). The P0 cart closes the lighting gap end-to-end and adds proper monitoring headphones plus a colour reference for multi-camera grading with the Canon C400.</div>
+  </section>
+
+  <footer>Whizzlead Media · whizzleadmedia.com</footer>
+</div>
+</body>
+</html>
